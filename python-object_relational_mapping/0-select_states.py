@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 """
-Lists all states from the database hbtn_0e_0_usa.
-Usage: ./0-select_states.py <mysql username> <mysql password> <database name>
+This script lists all states from the database hbtn_0e_0_usa.
+It takes 3 arguments: mysql username, mysql password and database name.
 """
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
+
+def main():
+    """
+    Connects to the database and retrieves all states
+    sorted by id in ascending order.
+    """
     # Connect to MySQL server
     db = MySQLdb.connect(
         host="localhost",
@@ -16,7 +21,7 @@ if __name__ == "__main__":
         db=sys.argv[3]
     )
 
-    # Create a cursor object to execute queries
+    # Create a cursor object
     cursor = db.cursor()
 
     # Execute the SQL query
@@ -32,3 +37,7 @@ if __name__ == "__main__":
     # Close cursor and database connection
     cursor.close()
     db.close()
+
+
+if __name__ == "__main__":
+    main()
