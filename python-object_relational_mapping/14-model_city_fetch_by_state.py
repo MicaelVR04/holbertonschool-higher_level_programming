@@ -15,9 +15,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query City and join with State to access state.name
-    # Sorting by City.id as requested
-    cities = session.query(City).join(State).order_by(City.id).all()
+    # Query all cities and order by id
+    # The relationship 'state' allows accessing city.state.name
+    cities = session.query(City).order_by(City.id).all()
 
     for city in cities:
         print("{}: ({}) {}".format(city.state.name, city.id, city.name))
