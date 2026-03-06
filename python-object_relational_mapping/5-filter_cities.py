@@ -16,11 +16,11 @@ if __name__ == "__main__":
                 JOIN states ON cities.state_id = states.id
                 WHERE states.name = %s
                 ORDER BY cities.id ASC""", (sys.argv[4],))
-    
+
     rows = cur.fetchall()
     # Extract names from tuples and join them with commas
     cities = [row[0] for row in rows]
     print(", ".join(cities))
-    
+
     cur.close()
     db.close()
