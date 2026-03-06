@@ -17,8 +17,9 @@ if __name__ == "__main__":
     session = Session()
 
     # Query for all states containing 'a'
-    states_to_delete = session.query(State).filter(State.name.contains('a'))
-    .all()
+    states_to_delete = session.query(State).filter(
+        State.name.contains('a')
+    ).all()
 
     # Iterate and delete each object
     for state in states_to_delete:
@@ -26,5 +27,4 @@ if __name__ == "__main__":
 
     # Commit the changes to the database
     session.commit()
-
     session.close()
