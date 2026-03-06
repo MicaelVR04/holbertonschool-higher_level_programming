@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     # Create engine for the database
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
 
     # Create a configured "Session" class
@@ -19,8 +19,8 @@ if __name__ == "__main__":
     # Create a Session instance
     session = Session()
 
-    # Query all State objects and sort by id
-    states = session.query(State).order_index(State.id).all()
+    # Corrected method: order_by
+    states = session.query(State).order_by(State.id).all()
 
     # Display results
     for state in states:
